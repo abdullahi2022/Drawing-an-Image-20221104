@@ -7,19 +7,19 @@ int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 PImage pic;
-Boolean nightMode=true;
+Boolean nightMode=false;
+int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 //
 void setup()
 {
-  size(1000, 800); //Landscape
+  size(800, 600); //Landscape
   //Copy Display Algorithm from Hello World
   appWidth = width;
   appHeight = height;
   //
-//Image Dimensions for Aspect Ratio
+  //Image Dimensions for Aspect Ratio
   //Obi-wan-star-wars-jedi-23864621-800-600.jpg
-  //Note: Dimensions are found in the image file / Right Click / Properties / Details/
-
+  //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800;
   int picHeight = 600;
   //
@@ -61,7 +61,7 @@ void setup()
   }
   //
   //Population
-  pic = loadImage("../Images Used/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
+  pic = loadImage("../Images Used/Abdullahi and Hamza.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -77,12 +77,15 @@ void setup()
   //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
   //
   //Background Image must be single executed code
-  if ( nightMode == false ) tint(255, 50); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
-  if ( nightMode == true ) tint(64, 64, 40, 50); //RGB: Night Mode
+  if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
+  if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
 void draw() {
+rect(120, 80, 150, 220, 28);
+rect(350, 80, 150, 220, 28);
+
 }//End draw
 //
 void keyPressed() {
@@ -93,11 +96,13 @@ void mousePressed() {
   //Mouse Pressed will control background image
   if ( mouseButton == LEFT) {
     nightMode = true;
-    tint(64, 64, 40, 50); //RGB: Night Mode
+    rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+    tint(64, 64, 40, 85); //RGB: Night Mode
     image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
   }
   if ( mouseButton == RIGHT ) {
     nightMode = false;
+    rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
     tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
     image(pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
   }
