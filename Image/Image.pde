@@ -21,6 +21,23 @@ void setup()
   appWidth = width;
   appHeight = height;
   //
+  //Population
+  pic = loadImage("../Images Used/Abdullahi and Hamza.jpg");
+  pic2 = loadImage("../Images Used/Elia and Abdullahi.jpg");
+  pic3 = loadImage("../Images Used/1ca67e88747493825b7e7b613dec8d3f.jpg");
+  backgroundImageX = appWidth*0;
+  backgroundImageY = appHeight*0;
+  backgroundImageWidth = appWidth-1;
+  backgroundImageHeight = appHeight-1;
+  topX = appWidth * 1/4;
+  topY = appHeight * 1/20;
+  topWidth = appWidth * 1/2;
+  topHeight = appHeight * 13/20;
+  bottomX = appWidth *1/2;
+  bottomY = appHeight * 3/4;
+  bottomWidth = appWidth * 1/4;
+  bottomHeight = appHeight * 4/20;
+  //
   //Image Dimensions for Aspect Ratio
   //1ca67e88747493825b7e7b613dec8d3f.jpg
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
@@ -71,22 +88,7 @@ void setup()
     println("CANVAS is smaller than Image");
   }
   //
-  //Population
-  pic = loadImage("../Images Used/Abdullahi and Hamza.jpg");
-  pic2 = loadImage("../Images Used/Elia and Abdullahi.jpg");
-  pic3 = loadImage("../Images Used/1ca67e88747493825b7e7b613dec8d3f.jpg");
-  backgroundImageX = appWidth*0;
-  backgroundImageY = appHeight*0;
-  backgroundImageWidth = appWidth-1;
-  backgroundImageHeight = appHeight-1;
-  topX = appWidth * 1/4;
-  topY = appHeight * 1/20;
-  topWidth = appWidth * 1/2;
-  topHeight = appHeight * 13/20;
-  bottomX = appWidth *1/2;
-  bottomY = appHeight * 3/4;
-  bottomWidth = appWidth * 1/4;
-  bottomHeight = appHeight * 4/20;
+  
   //
   //Verify Variable Values after Algorithm
   println("App Width:", appWidth, " and App Height:", appHeight);
@@ -94,10 +96,7 @@ void setup()
   println("Larger Image dimension is:", largerDimension);
   println("Adjusted Image dimesnions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
   //
-  //Rectangular Layout and Image Drawing to CANVAS
-  //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-  rect( topX, topY, topWidth, topHeight );
-  rect( bottomX, bottomY, bottomWidth, bottomHeight );
+  
   //
   //Algorithm uses rect-variables
   if ( picWidth2 >= picHeight2 ) { //True if Landscape or Square
@@ -156,6 +155,12 @@ void setup()
       exit(); //stop further use of the APP
     }
   }
+  //
+  //Rectangular Layout and Image Drawing to CANVAS
+  //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+  rect( topX, topY, topWidth, topHeight );
+  rect( bottomX, bottomY, bottomWidth, bottomHeight );
+  //
   //Background Image must be single executed code
   if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
   if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
