@@ -41,12 +41,12 @@ pic1 = loadImage("../Images Used/Abdullahi and Hamza.jpg");
   //Image Dimensions for Aspect Ratio: image meta data
   //Note: meta explored in MP3's or music files
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
-  int picWidth1 = 800; //Obi image
+  int picWidth1 = 800; //Hamza and Abdullahi (me)
   int picHeight1 = 600;
-  int picWidth2 = 860;//Bike image
+  int picWidth2 = 860;//Abdullahi and Elia
   int picHeight2 = 529;
-  int picWidth3 = 325; //Darth image
-  int picHeight3 = 485;
+  int picWidth3 = 860; //LUFFY FIRST BOUNTY
+  int picHeight3 = 500;
   //
   //Image Orientation: Landscape, Square, Portrait
   float smallerDimension1, largerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
@@ -61,8 +61,9 @@ pic1 = loadImage("../Images Used/Abdullahi and Hamza.jpg");
     imageHeightRatio1 = smallerDimension1 / largerDimension1;
     picHeightAdjusted1 = picWidthAdjusted1 * imageHeightRatio1;
     //
-    if ( picHeightAdjusted1 > backgroundImageHeight ) { //Error Catch
-      println("STOP: image is too big for rectangle layout");
+    if ( picHeightAdjusted1 > backgroundImageHeight+1 ) { //Error Catch
+      println (picHeightAdjusted1, backgroundImageHeight);
+      println("STOP: image background height is too big for rectangle layout");
       exit(); //stop further use of the APP
     }
   } else { //False if Portrait
@@ -74,7 +75,7 @@ pic1 = loadImage("../Images Used/Abdullahi and Hamza.jpg");
     imageWidthRatio1 = smallerDimension1 / largerDimension1;
     picWidthAdjusted1 = picHeightAdjusted1 * imageWidthRatio1;
     if ( picWidthAdjusted1 > backgroundImageWidth ) {
-      println("STOP: image is too big for rectangle layout");
+      println("STOP: image background width is too big for rectangle layout");
       exit(); //stop further use of the APP
     }
   }
